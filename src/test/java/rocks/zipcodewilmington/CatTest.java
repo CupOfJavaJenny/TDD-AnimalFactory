@@ -39,5 +39,87 @@ public class CatTest {
         Assert.assertEquals(givenBirthDate, retrievedBirthDate);
         Assert.assertEquals(givenId, retrievedId);
     }
+    @Test
+    public void setName(){
+        //given
+        String givenName = "Kitty";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+
+        Cat cat = new Cat(givenName, givenBirthDate, givenId);
+
+        //when is calling the setter because we're testing the setter
+        //we tested to see if the name change to cat is working
+        cat.setName("cat");
+        String actual = cat.getName();
+        Assert.assertEquals("cat", actual);
+
+
+    }
+    @Test
+    public void testSpeak(){
+        //given  (usually values, to mock what will happen
+        //if tested
+        String givenName = "Kitty";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+
+        //Cat is calling the constructor asking permission
+        //to make an object called kitty
+
+        //when
+        /*(when cat class is called to create a new
+        cat object called kitty
+
+         /*object is to be created before method
+
+         */
+        Cat kitty = new Cat(givenName, givenBirthDate, givenId);
+
+        String expected = "meow!";
+
+        //when whenever you are
+        // performing the action, does the work
+
+        String actual = kitty.speak();
+        //then
+        // always assert comparing if they're equal
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void testSetBirthdate(){
+        //given
+        String givenName = "Kitty";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+        //when
+        Cat kitty = new Cat(givenName,givenBirthDate, givenId );
+        //then
+        Date expected = givenBirthDate;
+        Date actual = kitty.getBirthDate();
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void testEat(){
+        //given
+        String givenName = "Kitty";
+        Date givenBirthDate = new Date();
+        Integer givenId = 0;
+        Food givenfood = new Food();
+
+        //when
+        Cat kitty = new Cat(givenName,givenBirthDate, givenId );
+     //our setter is the method
+      kitty.eat(givenfood);
+
+
+      //then
+        int expected = 1;
+        int actual = kitty.getNumberOfMealsEaten();
+
+        Assert.assertEquals(expected,actual);
+
+
+    }
 
 }
