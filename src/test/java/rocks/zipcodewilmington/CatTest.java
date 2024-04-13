@@ -2,6 +2,7 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.categories.CategoryValidator;
 import rocks.zipcodewilmington.animals.Cat;
 
 import java.util.Date;
@@ -100,26 +101,33 @@ public class CatTest {
         Assert.assertEquals(expected, actual);
     }
     @Test
-    public void testEat(){
+    public void testEat() {
         //given
-        String givenName = "Kitty";
-        Date givenBirthDate = new Date();
-        Integer givenId = 0;
-        Food givenfood = new Food();
-
+        int expectedAmount = 3;
+        int actualAmount = 0;
         //when
-        Cat kitty = new Cat(givenName,givenBirthDate, givenId );
-     //our setter is the method
-      kitty.eat(givenfood);
-
-
-      //then
-        int expected = 1;
-        int actual = kitty.getNumberOfMealsEaten();
-
-        Assert.assertEquals(expected,actual);
-
-
+        Cat kitty = new Cat("Kitty", new Date(), 2);
+        //kitty needs new food, let code know what needs to happen
+        Food tuna = new Food();
+        //we said kitty needs to eat 3x..we call the method eat 3x for kitty
+        kitty.eat(tuna);
+        kitty.eat(tuna);
+        kitty.eat(tuna);
+        //then
+        //how many times kitty ate needs  to be updated
+        actualAmount = kitty.getNumberOfMealsEaten();
+        Assert.assertEquals(expectedAmount, actualAmount);
     }
+    @Test
+    public Integer getId(){
+       //given
+        int expectedId=911;
+        int actualId=0;
+        //when
+        
+    }
+
+
+
 
 }

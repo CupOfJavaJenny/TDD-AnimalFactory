@@ -3,6 +3,7 @@ package rocks.zipcodewilmington.animals;
 import rocks.zipcodewilmington.Food;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author leon on 4/19/18.
@@ -24,6 +25,9 @@ public class Cat extends Mammal {
         //THIS constructor
         // is able to only have mealseaten available to THIS cat
         this.mealsEaten = 0;
+
+        
+
 
 
     }
