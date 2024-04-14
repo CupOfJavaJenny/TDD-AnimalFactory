@@ -1,5 +1,6 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
@@ -31,4 +32,69 @@ public class DogHouseTest {
         // Then
         DogHouse.getNumberOfDogs();
     }
+    @Test
+    public void testAddDog(){
+        //Given
+        Dog dog = new Dog("Milo", null, 2454);
+        Integer expectedDogs = 1;
+
+        //When
+        DogHouse.add(dog);
+        Integer actualDogs = DogHouse.getNumberOfDogs();
+
+        //Then
+        Assert.assertEquals(expectedDogs, actualDogs);
+        DogHouse.clear();
+
+    }
+
+    @Test
+    public void testRemoveDogById(){
+        //Given
+        Dog dog = new Dog("Milo",null,2454);
+        Integer expectedDogs = DogHouse.getNumberOfDogs();
+        //When
+        DogHouse.add(dog);
+        DogHouse.remove(2454);
+        Integer actualDogs = DogHouse.getNumberOfDogs();
+
+        //Then
+        Assert.assertEquals(expectedDogs, actualDogs);
+        DogHouse.clear();
+
+
+    }
+    @Test
+    public void testRemoveDog(){
+        //Given
+        Dog dog = new Dog("Milo" , null, 2454);
+        Integer expectedDogs = DogHouse.getNumberOfDogs();
+
+        //When
+        DogHouse.add(dog);
+        DogHouse.remove(dog);
+        Integer actualDogs = DogHouse.getNumberOfDogs();
+
+        //Then
+        Assert.assertEquals(expectedDogs, actualDogs);
+        DogHouse.clear();
+
+
+    }
+    @Test
+    public void testGetDogById(){
+        //Given
+        Dog dog = new Dog("Milo", null, 2454);
+        Dog expectedId = dog;
+        //When
+        DogHouse.add(dog);
+        Dog actualId = DogHouse.getDogById(2454);
+
+        //Then
+        Assert.assertEquals(expectedId, actualId);
+        DogHouse.clear();
+    }
+
+
+
 }

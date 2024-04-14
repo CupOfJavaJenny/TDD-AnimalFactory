@@ -3,7 +3,9 @@ package rocks.zipcodewilmington;
 import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
+import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
 
 import java.util.Date;
 
@@ -11,26 +13,21 @@ import java.util.Date;
  * @author leon on 4/19/18.
  */
 public class CatHouseTest {
-    //shelter is expecting x amount of cats,(amount)
-    // tell them its a cat we expect, when cat arrives we add to a shelter()
     // TODO - Create tests for `void add(Cat cat)`
     @Test
     public void testAddCat(){
         //given
-        int actualAmount=0;
-        int expectedAmount=2;
 
-        //when
-        Cat cat = new Cat("",new Date(),2);
-    //call class name then method
-        CatHouse.add(cat);
-        CatHouse.add(cat);
-        //then
-        //update the amount of cats using class.method
-        actualAmount=CatHouse.getNumberOfCats();
+        Cat cat = new Cat("Alice", null, 3);
+        Integer expectedCats = 1;
 
-        //when
-        Assert.assertEquals(expectedAmount,actualAmount);
+        //When
+        CatHouse.add(cat);
+        Integer actualCats = CatHouse.getNumberOfCats();
+
+        //Then
+        Assert.assertEquals(expectedCats, actualCats);
+        CatHouse.clear();
 
 
 
@@ -38,33 +35,28 @@ public class CatHouseTest {
     @Test
     public void testRemoveCatById(){
         //given
-        int actualAmount = 0;
-        int expectedAmount = 3;
+        //create object & expectation
+      Cat cat1 = new Cat("Alice",null,3);
+      Integer expectedCats = CatHouse.getNumberOfCats();
         //when
-        //create the defined objects we start with, we will later end at 3
-        Cat cat1 = new Cat("Jorris", new Date(),4);
-        Cat cat2 = new Cat("Alice", new Date(),3);
-        Cat cat3 = new Cat("Matt", new Date(),2);
-        Cat cat4 = new Cat("Jenn", new Date(),1);
-        //cats are waiting in line, put them in shelter
+
         CatHouse.add(cat1);
-        CatHouse.add(cat2);
-        CatHouse.add(cat3);
-        CatHouse.add(cat4);
+
         //remove 1 cat
-        CatHouse.remove(4);
+        CatHouse.remove(3);
 
-        actualAmount=CatHouse.getNumberOfCats();
-
-        Assert.assertEquals(expectedAmount, actualAmount);
+        Integer actualCats=CatHouse.getNumberOfCats();
+        //then
+        Assert.assertEquals(expectedCats, actualCats);
 
 
     }
     @Test
     public void testRemoveCatByCat(){
         //given
-        int actualAmount = 0;
-        int expectedAmount = 3;
+        Cat cat = new Cat("Alice",null,null);
+        Integer expectedCats = CatHouse.getNumberOfCats();
+
         //when
         //create the defined objects we start with, we will later end at 3
         Cat cat1 = new Cat("Jorris", new Date(),4);
@@ -72,16 +64,15 @@ public class CatHouseTest {
         Cat cat3 = new Cat("Matt", new Date(),2);
         Cat cat4 = new Cat("Jenn", new Date(),1);
         //cats are waiting in line, put them in shelter
-        CatHouse.add(cat1);
-        CatHouse.add(cat2);
-        CatHouse.add(cat3);
-        CatHouse.add(cat4);
+
+        CatHouse.add(cat);
+
         //remove 1 cat
-        CatHouse.remove(cat2);
+        CatHouse.remove(cat);
 
-        actualAmount=CatHouse.getNumberOfCats();
+        Integer actualCats = CatHouse.getNumberOfCats();
 
-        Assert.assertEquals(expectedAmount, actualAmount);
+        Assert.assertEquals(expectedCats, actualCats);
     }
     @Test
     public void getCatById(){
