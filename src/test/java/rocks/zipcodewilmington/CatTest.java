@@ -2,8 +2,9 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.experimental.categories.CategoryValidator;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.Date;
 
@@ -119,13 +120,44 @@ public class CatTest {
         Assert.assertEquals(expectedAmount, actualAmount);
     }
     @Test
-    public Integer getId(){
+    public void getId(){
        //given
         int expectedId=911;
         int actualId=0;
         //when
-        
+        //create object
+        Cat kitty = new Cat("",new Date(),911);
+        //then
+        //comparison
+        actualId= kitty.getId();
+        Assert.assertEquals(expectedId,actualId);
     }
+    @Test
+    public void isCatAnimal(){
+        //given
+
+        //when
+        //create object of cat if they're instance of
+        Cat cat = new Cat("", new Date(),2);
+        //then
+        Assert.assertTrue(cat instanceof Animal);
+
+
+    }
+    @Test
+    public void isCatMammal(){
+        //given
+
+        //when
+        //create object of cat if they're instance of
+        Cat cat = new Cat("", new Date(),2);
+        //then
+        Assert.assertTrue(cat instanceof Mammal);
+    }
+
+
+
+
 
 
 
