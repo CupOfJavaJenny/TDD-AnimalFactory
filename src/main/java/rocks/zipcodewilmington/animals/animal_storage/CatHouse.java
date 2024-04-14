@@ -10,10 +10,11 @@ public class CatHouse {
     private static AnimalWarehouse<Cat> catHouse = new AnimalWarehouse<>();
 
     public static void add(Cat cat) {
+
         catHouse.add(cat);
     }
-
     public static void remove(Integer id) {
+
         catHouse.removeAnimalById(id);
     }
 
